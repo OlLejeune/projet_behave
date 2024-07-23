@@ -1,6 +1,6 @@
 import logging
 import psycopg2
-from browser_actions import CdiscountBot
+from browser_actions import Cdiscount
 
 # Configurer le logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %
 def before_all(context):
     try:
         logging.info("Initialisation du WebDriver")
-        context.browser = CdiscountBot()
+        context.browser = Cdiscount()
         context.conn = psycopg2.connect("dbname=mydb user=myuser password=mypassword")  
         context.cursor = context.conn.cursor()
         logging.info("WebDriver et base de données initialisés avec succès")
@@ -17,7 +17,6 @@ def before_all(context):
 
 def after_all(context):
     try:
-        context.browser.quit()
         context.cursor.close()
         context.conn.close()
         logging.info("WebDriver et base de données fermés avec succès")

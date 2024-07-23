@@ -8,7 +8,8 @@ def step_impl(context):
         logging.info("Connexion faite avec succès")
         # print("Connexion faite avec succès")
     except Exception as e:
-        print(f"Erreur de connexion : ")
+        context.browser.save_screenshot("screenshot/redirect_failure.png")
+        print(f"Erreur de connexion : {e}")
 
 @when('a user logs in with username "{username}" and password "{password}"')
 def step_impl(context, username, password):

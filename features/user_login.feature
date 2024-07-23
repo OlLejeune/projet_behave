@@ -1,5 +1,5 @@
 Feature: User Login
-    n order to access personal account features
+    in order to access personal account features
     As a user
     I want to log in to the system
 
