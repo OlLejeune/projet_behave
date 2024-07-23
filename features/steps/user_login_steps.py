@@ -1,12 +1,14 @@
 from behave import given, when, then
+import logging
 
 @given('the login page is displayed')
 def step_impl(context):
     try:
         context.browser.login('ricacegos@gmail.com', 'Roibcaan1')
-        print("Connexion faite avec succès")
+        logging.info("Connexion faite avec succès")
+        #print("Connexion faite avec succès")
     except Exception as e:
-        print(f"Erreur de connexion : ")
+        print(f"Erreur de connexion : {e} ")
 
 @when('a user logs in with username "{username}" and password "{password}"')
 def step_impl(context, username, password):
@@ -21,9 +23,9 @@ def step_impl(context):
 @then('the user data should be present in the database')
 def step_impl(context):
     try:
-        context.cursor.execute("SELECT * FROM users WHERE email=%s", ('ricacegos@gmail.com',))
+        context.cursor.execute("SELECT * FROM users WHERE login=%s", ('ricacegos@gmail.com',))
         result = context.cursor.fetchone()
+        logging.info(f"Le résultat de la requête est {result}")
         assert result is not None
     except Exception as e:
         print(f"Erreur lors de la récupération de données en BDD : {e}")
-    
