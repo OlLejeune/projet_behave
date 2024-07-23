@@ -6,14 +6,14 @@ def step_impl(context):
     try:
         context.browser.login('ricacegos@gmail.com', 'Roibcaan1')
         logging.info("Connexion faite avec succès")
-        #print("Connexion faite avec succès")
+        # print("Connexion faite avec succès")
     except Exception as e:
-        print(f"Erreur de connexion : {e} ")
+        print(f"Erreur de connexion : ")
 
 @when('a user logs in with username "{username}" and password "{password}"')
 def step_impl(context, username, password):
-
-    print("Connexion de l'utilisateur réussie")
+    logging.info("Connexion de l'utilisateur réussie")
+    # print("Connexion de l'utilisateur réussie")
 
 @then('the user should be redirected to the homepage')
 def step_impl(context):
@@ -29,3 +29,4 @@ def step_impl(context):
         assert result is not None
     except Exception as e:
         print(f"Erreur lors de la récupération de données en BDD : {e}")
+    
