@@ -37,8 +37,8 @@ class Cdiscount:
             input_field.send_keys(text)
         except Exception as e:
             print(f"An error occurred while trying to enter text: {e}")
-                     
-                     
+                
+                
     def login(self, username, password):
         try:
             self.open_website("https://order.cdiscount.com/Account/LoginLight.html?referrer=")
